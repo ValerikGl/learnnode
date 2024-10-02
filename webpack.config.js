@@ -1,8 +1,17 @@
-const path = require('path');
-const autoprefixer = require('autoprefixer');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import autoprefixer from 'autoprefixer';
+import { fileURLToPath } from 'url';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.URL);
+const __dirname = path.dirname()
+
+
+let response = await fetch('https://api.spaceflightnewsapi.net/v4/articles/?format=json');
+let body = await response.text;
+console.log(body);
+
+export default {
   entry: './src/index.js',
   output: {
     filename: 'main.js',
@@ -67,6 +76,15 @@ module.exports = {
     ],
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.njk'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.njk'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.njk'
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.njk'
     })
