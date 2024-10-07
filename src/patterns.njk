@@ -1,19 +1,14 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap w/ Webpack</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  </head>
-  <body>
-    {% include 'src/partials/nav.njk'%}
-    
-   <h1>Partials</h1>
-   <p></p>
- 
-
-<!-- footer section-->
- {%include 'src/partials/footer.njk'%}
-  </body>
-</html>
+{% extends 'src/partials/layout.njk' %}
+{% block title %}Patterns{% endblock %}
+{% block content %}
+  <div class="container">
+    <h1>Patterns</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus, incidunt! Harum quae molestiae corporis,
+      corrupti quo pariatur aliquid animi autem? Libero voluptatem at quibusdam iure? Quam, aspernatur. Eligendi, cumque quis?
+      Quo corrupti corporis officia! Voluptates consequatur fugiat nam in facere? Nobis alias ex veniam eos, cumque vitae.
+      Atque, corporis aut. Porro, quaerat! Laborum sit vitae recusandae ipsam cupiditate dolorum cum! Officia libero id quis
+      eveniet ipsam quisquam nulla inventore veritatis! Nostrum magni, libero odio qui natus sed ducimus debitis sequi.
+      Similique earum placeat harum, id quo perferendis minima tempora assumenda. Vitae, maiores. Dignissimos quo excepturi
+      sed, officiis temporibus dicta odit.</p>
+  </div>
+{% endblock %}
