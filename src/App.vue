@@ -1,5 +1,10 @@
 <script setup>
-let message= 'Hello Vue!';
+import { ref } from 'vue';
+
+let message = ref('Hello Vue!');
+setTimeout(() => {
+    message.value ='Something else'
+}, 10000);
 </script>
 
 <template>
