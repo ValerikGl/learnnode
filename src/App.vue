@@ -1,60 +1,47 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed } from "vue";
+import ItemList from "./ItemList.vue";
 
-let newItem = ref('');
+let newItem = ref("");
 let items = ref([
-  { text: 'piim', done: true},
-  { text: 'viin', done: false},
-  { text: 'sai', done: true},
-  { text: 'leib', done: false},
-  { text: 'õlu', done: true},
-  { text: 'banaan', done: false},
+  { text: "piim", done: true },
+  { text: "viin", done: false },
+  { text: "sai", done: true },
+  { text: "leib", done: false },
+  { text: "õlu", done: true },
+  { text: "banaan", done: false },
 ]);
 
 function add() {
-    if (newItem.value.trim() !== '') {
-   items.value.push({text: newItem.value, done  : true});
-    }
-    newItem.value = '';
+  if (newItem.value.trim() !== "") {
+    items.value.push({ text: newItem.value, done: true });
+  }
+  newItem.value = "";
 }
 
-let doneItems = computed(() => items.value.filter(item => item.done));
-let toDoItems = computed(() => items.value.filter(item => !item.done));
-
+let doneItems = computed(() => items.value.filter((item) => item.done));
+let toDoItems = computed(() => items.value.filter((item) => !item.done));
 </script>
 
 <template>
-<div class="container mt-2">
+  <div class="container mt-2">
     <div class="field has-addons">
-  <div class="control is-expanded">
-    <input class="input" type="text" v-model="newItem" @keydown.enter="add">
+      <div class="control is-expanded">
+        <input
+          class="input"
+          type="text"
+          v-model="newItem"
+          @keydown.enter="add"
+        />
+      </div>
+      <div class="control">
+        <button class="button is-info" @click="add">Add</button>
+      </div>
+    </div>
+    <div class="content">
+      <ItemList :items="items" title="All items"></ItemList>
+      <ItemList :items="doneItems" title="Done Items"></ItemList>
+      <ItemList :items="toDoItems" title="ToDo Items"></ItemList>
+    </div>
   </div>
-  <div class="control">
-    <button class="button is-info" @click="add">
-      Add
-    </button>
-  </div>
-</div>
-<div class="content">
-  <h1>All Items</h1>
-    <ul>
-        <li v-for="item in items">{{ item.text }}
-          <input type="checkbox" v-model="item.done">
-        </li>
-    </ul>
-    <h1>Done Items</h1>
-    <ul>
-        <li v-for="item in doneItems">{{ item.text }}
-          <input type="checkbox" v-model="item.done">
-        </li>
-    </ul>
-    <h1>ToDo Items</h1>
-    <ul>
-        <li v-for="item in toDoItems">{{ item.text }}
-          <input type="checkbox" v-model="item.done">
-        </li>
-    </ul>
-</div>
-    
-</div>
 </template>
