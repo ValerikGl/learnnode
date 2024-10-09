@@ -1,47 +1,46 @@
 <script setup>
-import { ref, computed } from "vue";
-import ItemList from "./ItemList.vue";
-
-let newItem = ref("");
-let items = ref([
-  { text: "piim", done: true },
-  { text: "viin", done: false },
-  { text: "sai", done: true },
-  { text: "leib", done: false },
-  { text: "õlu", done: true },
-  { text: "banaan", done: false },
-]);
-
-function add() {
-  if (newItem.value.trim() !== "") {
-    items.value.push({ text: newItem.value, done: true });
-  }
-  newItem.value = "";
-}
-
-let doneItems = computed(() => items.value.filter((item) => item.done));
-let toDoItems = computed(() => items.value.filter((item) => !item.done));
+import { ref } from "vue";
+import Modal from './components/Modal.vue'
+let modalActive = ref(false);
+let modal2Active = ref(false);
+let modal3Active = ref(false);
 </script>
 
 <template>
-  <div class="container mt-2">
-    <div class="field has-addons">
-      <div class="control is-expanded">
-        <input
-          class="input"
-          type="text"
-          v-model="newItem"
-          @keydown.enter="add"
-        />
-      </div>
-      <div class="control">
-        <button class="button is-info" @click="add">Add</button>
-      </div>
-    </div>
-    <div class="content">
-      <ItemList :items="items" title="All items"></ItemList>
-      <ItemList :items="doneItems" title="Done Items"></ItemList>
-      <ItemList :items="toDoItems" title="ToDo Items"></ItemList>
-    </div>
+  <div class="container">
+    <button class="button is-primary" @click="modalActive = true">
+      Modal1
+    </button>
+    <button class="button is-secondary" @click="modal2Active = true">
+      Modal2
+    </button>
+    <button class="button is-warning" @click="modal3Active = true">
+      Modal3
+    </button>
   </div>
+<Modal
+  :active="modalActive" 
+  @close="modalActive=false" 
+  url="https://bulma.io/assets/images/placeholders/1280x960.png">
+</Modal>
+
+<Modal 
+  :active="modal2Active" 
+  @close="modal2Active=false" 
+  url="https://picsum.photos/seed/modal2/1280/960">
+</Modal>
+  
+  <Modal 
+  :active="modal3Active" 
+  @close="modal3Active=false">
+    <div class="notification is-primary">
+    <button class="delete" @click="modal3Active=false" ></button>
+      Primar lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum
+      dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta
+      nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus
+      diam, et dictum <a>felis venenatis</a> efficitur.
+  </div>
+</Modal>
+  
 </template>
+
