@@ -8,6 +8,8 @@ import ToDo from './pages/ToDo.vue';
 import Modals from './pages/Modals.vue';
 import Buttons from './pages/Buttons.vue';
 import NotificationExample from './pages/NotificationExample.vue';
+import ChuckNorris from './pages/ChuckNorris.vue';
+import RickAndMorty from './pages/RickAndMorty.vue';
 
 
 const routes = [
@@ -15,6 +17,8 @@ const routes = [
     { path: '/modals', component: Modals, name:'Modals' },
     { path: '/buttons', component: Buttons, name:'Buttons'},
     { path: '/notifications', component: NotificationExample, name:'Notifications' },
+    { path: '/chuck', component: ChuckNorris, name:'Chuck Norris' },
+    { path: '/rickandmorty', component: RickAndMorty, name:'Rick And Morty' },
   ];
   
   const router = createRouter({

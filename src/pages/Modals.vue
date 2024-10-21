@@ -7,7 +7,7 @@ let modal3Active = ref(false);
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" >
     <button class="button is-primary" @click="modalActive = true">
       Modal1
     </button>

@@ -24,7 +24,7 @@ let toDoItems = computed(() => items.value.filter((item) => !item.done));
 </script>
 
 <template>
-  <div class="container mt-2">
+  <div class="container mt-2" >
     <div class="field has-addons">
       <div class="control is-expanded">
         <input
